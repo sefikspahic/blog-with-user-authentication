@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [isEmailUser, setIsEmailUser] = useState(false);
-  const [isGoogleUser, setIsGoogleUser] = useState(false);
+
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   
@@ -60,11 +60,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem('posts', JSON.stringify(initialPosts));
     }
   }, []);
-// const addPost = (post) => {
-//     const updatedPosts = [...posts, post];
-//     setPosts(updatedPosts);
-//     localStorage.setItem("posts", JSON.stringify(updatedPosts));
-//   };
+
 
   const addPost = (post) => {
     const newId = posts.length > 0 ? posts[posts.length - 1].id + 1 : 0;
@@ -75,7 +71,6 @@ export function AuthProvider({ children }) {
   const value = {
     userLoggedIn,
     isEmailUser,
-    isGoogleUser,
     currentUser,
     setCurrentUser,
     addPost,

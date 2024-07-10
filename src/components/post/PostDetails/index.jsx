@@ -1,12 +1,11 @@
-// components/post/PostDetails.js
-import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import { useAuth } from "../../../contexts/authContext";
+import React  from "react";
+import { useLocation } from "react-router-dom";
+
 
 const PostDetails = () => {
     const location = useLocation();
     const { title, content } = location.state || {};
-    console.log(location, "sefs");
+
     if (!title || !content) {
       return  <div>Post data not found or missing</div>;
     }

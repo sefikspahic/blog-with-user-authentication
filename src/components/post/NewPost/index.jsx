@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../../../contexts/authContext"; 
 import { Link } from "react-router-dom";
 import CorrectIcon from "../../../assets/icon/1292787.svg"
+
 function NewPost() {
   const { addPost } = useAuth(); 
   const [title, setTitle] = useState("");
@@ -11,7 +12,7 @@ function NewPost() {
     e.preventDefault();
     setShowIcon(true);
     const currentDate = new Date();
-    const day = currentDate.getDate(); // Dobijemo dan u mjesecu
+    const day = currentDate.getDate(); 
     const month = currentDate.toLocaleString('default', { month: 'long' });
 
 

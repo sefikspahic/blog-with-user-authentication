@@ -18,7 +18,7 @@ const Header = () => {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target) &&
         menuButtonRef.current &&
-        !menuButtonRef.current.contains(event.target) // Dodajemo provjeru za dugme
+        !menuButtonRef.current.contains(event.target) 
       ) {
         setDropdown(false);
       }
