@@ -6,12 +6,25 @@ import Layout from "./components/Layout/Layout";
 import { AuthProvider } from "./contexts/authContext";
 import { useRoutes } from "react-router-dom";
 import PrivateRoute from "./router/PrivateRoute";
+import NewPost from "./components/post/NewPost";
+import PostList from "./components/post/PostList";
+import PostDetails from "./components/post/PostDetails";
 
 function App() {
+
   const routesArray = [
     {
       path: "*",
       element: <Login />,
+    },
+    {
+      path: `/post/:id`,
+      element: <PostDetails />
+    },
+    {
+      path: "/",
+      element: <PostList />
+
     },
     {
       path: "/login",
@@ -22,6 +35,14 @@ function App() {
       element: <Register />,
     },
     {
+      path: "*",
+      element: (
+        <PrivateRoute>
+          <Login />
+        </PrivateRoute>
+      ),
+    },
+    {
       path: "/home",
       element: (
         <PrivateRoute>
@@ -29,11 +50,21 @@ function App() {
         </PrivateRoute>
       ),
     },
+    {
+      path: "/create-post",
+      element: (
+        <PrivateRoute>
+          <NewPost />
+        </PrivateRoute>
+      ),
+    },
+  
+
   ];
-  let routesElement = useRoutes(routesArray);
+  let routing = useRoutes(routesArray);
   return (
     <AuthProvider>
-      <Layout>{routesElement}</Layout>
+      <Layout>{routing}</Layout>
     </AuthProvider>
   );
 }
